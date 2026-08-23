@@ -1,0 +1,61 @@
+---
+title: "Exploring Storms"
+author: "Antigravity"
+format: html
+execute:
+  echo: false
+---
+
+```{r}
+#| label: setup
+#| message: false
+
+library(tidyverse)
+```
+
+```{r}
+#| label: plot-storms
+
+storms |>
+  distinct(year, name) |>
+  count(year) |>
+  ggplot(aes(x = year, y = n)) +
+  geom_line() +
+  labs(
+    title = "Number of Named Storms per Year",
+    x = "Year",
+    y = "Number of Storms"
+  )
+```
+
+```{r}
+#| label: filtered-storms
+#| cache: true
+
+storms_recent <- storms |>
+  filter(year >= 2000) |>
+  select(year, name, status, wind, pressure)
+```
+
+```{r}
+#| label: plot-pressure-wind
+
+storms_recent |>
+  ggplot(aes(x = pressure, y = wind, color = status)) +
+  geom_point(alpha = 0.5) +
+  labs(
+    title = "Atmospheric Pressure vs. Wind Speed",
+    subtitle = "Lower central pressure is strongly associated with higher sustained wind speeds",
+    x = "Atmospheric Pressure (mbar)",
+    y = "Wind Speed (knots)",
+    color = "Storm Status"
+  )
+```
+
+
+
+
+
+
+
+

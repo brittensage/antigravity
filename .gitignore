@@ -1,0 +1,23 @@
+# History files
+.Rhistory
+.Rapp.history
+
+# Session Data files
+.RData
+.RDataTmp
+.Ruserdata
+
+# User-specific files
+.Renviron
+.Rprofile.site
+.Rproj.user/
+
+# Quarto temporary and cache files
+/.quarto/
+*_cache/
+analysis_cache/
+*_files/
+
+# OS generated files
+.DS_Store
+Thumbs.db
